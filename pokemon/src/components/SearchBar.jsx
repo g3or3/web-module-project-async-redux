@@ -19,7 +19,7 @@ const SearchBar = (props) => {
 			/>
 			<button
 				onClick={() => {
-					props.searchPokemon(input);
+					props.searchPokemon(input.toLowerCase());
 					setInput("");
 				}}
 			>
