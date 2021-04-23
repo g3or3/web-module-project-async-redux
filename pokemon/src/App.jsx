@@ -10,6 +10,12 @@ const saveList = (list) => {
 
 function App(props) {
 	const { pokemon, addPokemon } = props;
+
+	useEffect(() => {
+		if (localStorage.getItem("pokemon")) return;
+		else localStorage.setItem("pokemon", "[]");
+	}, []);
+
 	useEffect(() => {
 		const list = JSON.parse(localStorage.getItem("pokemon"));
 		list.map((p) => addPokemon(p));
