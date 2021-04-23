@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { addPokemon } from "./actions/actions";
+import { addPokemon, clearPokemon } from "./actions/actions";
 import PokemonList from "./components/PokemonList";
 import SearchBar from "./components/SearchBar";
 
@@ -9,7 +9,7 @@ const saveList = (list) => {
 };
 
 function App(props) {
-	const { pokemon, addPokemon } = props;
+	const { pokemon, addPokemon, clearPokemon } = props;
 
 	useEffect(() => {
 		if (localStorage.getItem("pokemon")) return;
@@ -29,6 +29,15 @@ function App(props) {
 			>
 				Save List!
 			</button>
+			<button
+				style={{ display: "block", margin: "2% auto 0" }}
+				onClick={() => {
+					localStorage.setItem("pokemon", "[]");
+					clearPokemon();
+				}}
+			>
+				Clear List
+			</button>
 			<SearchBar />
 			<PokemonList />
 		</div>
@@ -37,4 +46,4 @@ function App(props) {
 
 const mapStateToProps = (state) => ({ ...state });
 
-export default connect(mapStateToProps, { addPokemon })(App);
+export default connect(mapStateToProps, { addPokemon, clearPokemon })(App);

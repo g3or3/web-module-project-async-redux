@@ -9,6 +9,10 @@ export const removePokemon = (pokemon) => {
 	return { type: actions.REMOVE_POKEMON, payload: pokemon };
 };
 
+export const clearPokemon = () => {
+	return { type: actions.CLEAR_LIST };
+};
+
 export const searchPokemon = (pokemon) => (dispatch) => {
 	axios
 		.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
